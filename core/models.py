@@ -7,6 +7,9 @@ class Category(models.Model):
     urls = models.TextField(blank=True)
     sort = models.IntegerField(default=0)
 
+    def __unicode__(self):
+        return self.name
+
     class Meta:
         ordering = ["sort"]
         verbose_name = "Категория"
@@ -18,9 +21,12 @@ class Product(models.Model):
     name = models.CharField(max_length=255)
     price = models.FloatField(default=0)
     image = models.ImageField(blank=True, upload_to="product/")
-    descr = models.TextField(blank=True)
+    description = models.TextField(blank=True)
     sort = models.IntegerField(default=0)
     urls = models.TextField(blank=True)
+
+    def __unicode__(self):
+        return self.name
 
     class Meta:
         ordering = ["sort"]
